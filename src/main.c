@@ -13,8 +13,9 @@ static uint8_t device_name[] = {'P', 'V', '0', '0', '0', '0', '0', '0'};
 
 int main(void)
 {
-	struct net_if *iface = net_if_get_default();
-	struct net_linkaddr *mac_addr = net_if_get_link_addr(iface);
+	// struct net_if *iface = net_if_get_default();
+	// struct net_linkaddr *mac_addr = net_if_get_link_addr(iface);
+	struct net_linkaddr *mac_addr = initialize_wifi();
 
 	k_sleep(K_SECONDS(1));
 
@@ -29,7 +30,7 @@ int main(void)
 	start_advertising();
 	initialize_advertisement_state_workers();
 
-	net_mgmt(NET_REQUEST_WIFI_CONNECT_STORED, iface, NULL, 0);
+	// net_mgmt(NET_REQUEST_WIFI_CONNECT_STORED, iface, NULL, 0);
 
 	return 0;
 }
